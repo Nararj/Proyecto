@@ -50,11 +50,23 @@ def roles(nivel):
         elif nivel <= 2000:
             print("Tu rol es Comissioner")
 
-# Pedir los datos
+#Hacer que el codigo se repita, esto usando while, como? no se
+si = "s"
+while si == "s":
+    nivel = int(input("Escribe tu nivel actual: "))
+    while not (1 <= nivel <= 2000):
+        nivel = int(input("Nivel inválido, ingresar un número del 1 al 2000: "))
 
-nivel = int(input("Escribe tu nivel actual: "))
-print("Existe prestigio de 1 a 20")
-prestigio = int(input("Escribe nivel de prestigio deseado: "))
+    print("Existe prestigio de 1 a 20")
+    prestigio = int(input("Escribe nivel de prestigio deseado: "))
 
-calcular_niveles(nivel, prestigio)
-roles(nivel)
+    while not (1 <= prestigio <= 20):
+        prestigio = int(input("Prestigio inválido, ingresar un número del 1 al 20: "))
+     
+    
+    calcular_niveles(nivel, prestigio)
+    roles(nivel)
+    si = input("Quieres calcular otro nivel? (s/n): ").lower()
+
+print("Gracias por usar :D")
+
