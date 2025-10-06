@@ -1,4 +1,4 @@
-#Un código que te diga tu rol actual, cuántos niveles te faltan para llegar al prestigio que quieres en Phasmophobia y qué rol tendrás en ese prestigio.
+# Un código que te diga tu rol actual, cuántos niveles te faltan para llegar al prestigio que quieres en Phasmophobia y que rol tendras en ese prestigio.
 
 # Definir una funcion para validar el nivel
 
@@ -23,50 +23,58 @@ def calcular_niveles(nivel, prestigio):
         faltante = calculo1 - nivel
         print(f"Tu nivel actual es {actual} y te faltan {faltante} niveles para prestigio deseado")
 
-# Funcion para definir rl rol actual
+# Crear lista con roles
+
+lista_de_roles = []
+(1, 99, "Intern"),
+(100, 199, "Recruit"),
+(200, 299, "Investigator"),
+(300, 399, "Pbt. Investigator"),
+(400, 499, "Detective"),
+(500, 599, "Technician"),
+(600, 699, "Specialist"),
+(700, 799, "Analyst"),
+(800, 899, "Agent"),
+(900, 999, "Operator"),
+(1000, 2000, "Comissioner")
 
 def roles(nivel):
     if obtener_nivel(nivel):
-        if nivel >= 1 and nivel <= 99:
-            print("Tu rol es Intern")
-        elif nivel <= 199:
-            print("Tu rol es Recruit")
-        elif nivel <= 299:
-            print("Tu rol es Investigator")
-        elif nivel <= 399:
-            print("Tu rol es Pbt. Investigator")
-        elif nivel <= 499:
-            print("Tu rol es Detective")
-        elif nivel <= 599:
-            print("Tu rol es Technician")
-        elif nivel <= 699:
-            print("Tu rol es Specialist")
-        elif nivel <= 799:
-            print("Tu rol es Analyst")
-        elif nivel <= 899:
-            print("Tu rol es Agent")
-        elif nivel <= 999:
-            print("Tu rol es Operator")
-        elif nivel <= 2000:
-            print("Tu rol es Comissioner")
+        for minimo, maximo, rol in lista_de_roles:
+            if minimo <= nivel <= maximo:
+                print(f"Tu rol es {rol}")
+                break
 
-#Hacer que el codigo se repita, esto usando while, como? no se
+# Hacer que el codigo se repita usando while
+
 si = "s"
 while si == "s":
+    prestigio_actual = 0
+    es_prestigio = input("¿Tienes algún prestigio? (s/n): ").lower()
+
+# Definir si ya se tiene un prestigio
+
+    if es_prestigio == "s":
+        prestigio_actual = int(input("¿Qué prestigio tienes (1-20)?: "))
+        while not (1 <= prestigio_actual <= 20):
+            prestigio_actual = int(input("Prestigio inválido, ingresar un número del 1 al 20: "))
+
     nivel = int(input("Escribe tu nivel actual: "))
-    while not (1 <= nivel <= 2000):
-        nivel = int(input("Nivel inválido, ingresar un número del 1 al 2000: "))
+    while not (1 <= nivel <= 99):
+        nivel = int(input("Nivel inválido, ingresar un número del 1 al 99: "))
+
+# Ajustar el nivel a uno nuevo si ya se tiene prestigio
+
+    nivel_nuevo = ((prestigio_actual ) * 100) + nivel if prestigio_actual > 0 else nivel
 
     print("Existe prestigio de 1 a 20")
-    prestigio = int(input("Escribe nivel de prestigio deseado: "))
+    prestigio_deseado = int(input("Escribe nivel de prestigio deseado: "))
 
-    while not (1 <= prestigio <= 20):
-        prestigio = int(input("Prestigio inválido, ingresar un número del 1 al 20: "))
-     
+    while not (1 <= prestigio_deseado <= 20):
+        prestigio_deseado = int(input("Prestigio inválido, ingresar un número del 1 al 20: "))
     
-    calcular_niveles(nivel, prestigio)
-    roles(nivel)
-    si = input("Quieres calcular otro nivel? (s/n): ").lower()
+    calcular_niveles(nivel_nuevo, prestigio_deseado)
+    roles(nivel_nuevo)
+    si = input("¿Quieres calcular otro nivel? (s/n): ").lower()
 
 print("Gracias por usar :D")
-
