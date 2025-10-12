@@ -1,4 +1,5 @@
-# Un código que te diga tu rol actual, cuántos niveles te faltan para llegar al prestigio que quieres en Phasmophobia y que rol tendras en ese prestigio.
+# Un código que te diga tu rol actual, cuántos niveles te faltan para llegar al 
+# prestigio que quieres en Phasmophobia y que rol tendras en ese prestigio.
 
 # Definir una funcion para validar el nivel
 
@@ -25,25 +26,67 @@ def calcular_niveles(nivel, prestigio):
 
 # Crear lista con roles
 
-lista_de_roles = []
-(1, 99, "Intern"),
-(100, 199, "Recruit"),
-(200, 299, "Investigator"),
-(300, 399, "Pbt. Investigator"),
-(400, 499, "Detective"),
-(500, 599, "Technician"),
-(600, 699, "Specialist"),
-(700, 799, "Analyst"),
-(800, 899, "Agent"),
-(900, 999, "Operator"),
-(1000, 2000, "Comissioner")
+lista_de_roles = [
+    (1, 99, "Intern"),
+    (100, 199, "Recruit"),
+    (200, 299, "Investigator"),
+    (300, 399, "Pbt. Investigator"),
+    (400, 499, "Detective"),
+    (500, 599, "Technician"),
+    (600, 699, "Specialist"),
+    (700, 799, "Analyst"),
+    (800, 899, "Agent"),
+    (900, 999, "Operator"),
+    (1000, 2000, "Comissioner")
+]
+
+# Listas anidadas separadas por categorías
+
+categorias_principiante = [
+    ["Intern"],
+    ["Recruit"]
+]
+
+categorias_intermedio = [
+    ["Investigator"],
+    ["Pbt. Investigator"],
+    ["Detective"]
+]
+
+categorias_avanzado = [
+    ["Technician"],
+    ["Specialist"],
+    ["Analyst"]
+]
+
+categorias_experto = [
+    ["Agent"],
+    ["Operator"],
+    ["Comissioner"]
+]
+
+# Regresar el rol y la categoría según el nivel
 
 def roles(nivel):
     if obtener_nivel(nivel):
+        rol_encontrado = None
         for minimo, maximo, rol in lista_de_roles:
             if minimo <= nivel <= maximo:
+                rol_encontrado = rol
                 print(f"Tu rol es {rol}")
                 break
+        
+        # Buscar categoría en las listas
+
+        if rol_encontrado:
+            for categoria, lista in [("Principiante", categorias_principiante),
+                                     ("Intermedio", categorias_intermedio),
+                                     ("Avanzado", categorias_avanzado),
+                                     ("Experto", categorias_experto)]:
+                for sublista in lista:
+                    if rol_encontrado in sublista:
+                        print(f"Estás en la categoría: {categoria}")
+                        return
 
 # Hacer que el codigo se repita usando while
 
