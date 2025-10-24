@@ -1,5 +1,5 @@
 # Proyecto
-- Un código que te diga tu rol actual, cuántos niveles te faltan para llegar al prestigio que quieres en Phasmophobia y qué rol tendrás en ese prestigio.
+- Un código que te diga tu rol actual y cuántos niveles te faltan para llegar al prestigio que quieres en Phasmophobia
 - Lo encuentro interesante porque cuando yo intenté buscar esta información no me apareció ningún dato y sería más fácil para los jugadores saber esta información si ya existe algo que te la diga.
 
 **ALGORTIMO**
@@ -19,6 +19,6 @@
 	
 *SALIDAS*
 
- - Rol actual y futuro (texto)
+ - Rol actual (texto)
  - Cuanto te falta para el prestigio deseado (número entero)
  - Nivel y prestigio actuales (número entero)
